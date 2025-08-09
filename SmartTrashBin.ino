@@ -20,8 +20,8 @@
 WidgetLED led(V1);
 
 // WiFi credentials.
-char ssid[] = "Wokwi-GUEST";
-char pass[] = ""; 
+char ssid[] = "your_wifi";
+char pass[] = "your_pass"; 
 
 const int trigPin = 19;
 const int echoPin = 18;
