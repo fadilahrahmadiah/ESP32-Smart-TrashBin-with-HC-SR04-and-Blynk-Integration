@@ -1,14 +1,15 @@
-// Implementasi Teknologi Internet of Things (IoT)
-// untuk Monitoring dan Notifikasi Kapasitas Tempat Sampah
-// untuk Membuka dan Menutup Tempat Sampah secara Otomatis 
-// Menggunakan Servo
-// Menggunakan Sensor HC-SR04
+// Implementation of Internet of Things (IoT) Technology
+// Trash Can Capacity Monitoring and Notification
+// Automatically Opening and Closing Trash Cans
+// Using a Servo
+// Using an HC-SR04 Sensor
+// Using an IR Sensor
 
-//Penghubung ke Blynk
+// Connect to Blynk
 #define BLYNK_PRINT Serial
 #define BLYNK_TEMPLATE_ID "TMPL6tcRK03O2"
 #define BLYNK_TEMPLATE_NAME "project iot"
-#define BLYNK_AUTH_TOKEN         "tJltuU_KB4QljKQRRmoFCV55oIHDX_xx"
+#define BLYNK_AUTH_TOKEN "tJltuU_KB4QljKQRRmoFCV55oIHDX_xx"
 
 // Header WiFi
 #include <WiFi.h>
@@ -81,7 +82,7 @@ void readheight()
   duration = pulseIn(echoPin, HIGH); 
   distance = duration * 0.034 / 2;
 
-  Serial.print("Jarak: ");
+  Serial.print(": ");
   Serial.println(distance);
   Blynk.virtualWrite(V0, distance);
 
@@ -89,7 +90,7 @@ void readheight()
     digitalWrite(ledMerah, HIGH);
     led.on();
     if (!alreadyNotified) {
-      Blynk.logEvent("tempat_sampah_penuh", "Tempat sampah penuh! Segera kosongkan"); 
+      Blynk.logEvent("trash_bin_full", "Oops, the trash bin is full! Please empty it when you get a chance."); 
       alreadyNotified = true; 
     }
   } else {
